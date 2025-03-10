@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XL Solver</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--chakra-colors-bg, white);
+    }
+
+    .container {
+      max-width: 64rem;
+      height: 80vh;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: relative;
+      margin-inline: auto;
+      padding-inline: 2rem;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      line-height: 1.5;
+    }
+
+    .title {
+      font-size: 6rem;
+      font-weight: 700;
+      color: var(--logo, #a1a1aa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      text-align: center;
+      margin-bottom: 2rem;
+      cursor: default;
+      user-select: none;
+      -webkit-user-select: none;
+      filter: brightness(var(--logo-brightness, 100%));
+    }
+
+    .skeleton {
+      height: 40px;
+      margin-bottom: 10px;
+      width: 100%;
+      border: 1px solid var(--chakra-colors-border, #e4e4e7);
+      border-radius: 0.25rem;
+      color: var(--chakra-colors-fg-subtle, #a1a1aa);
+      animation: l1 1s ease-in-out infinite alternate;
+      text-align: center;
+      align-content: center;
+    }
+
+    @keyframes l1 {
+      to {
+        opacity: 0.4
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .title {
+        color: var(--logo, #71717a);
+      }
+
+      .skeleton {
+        color: var(--chakra-colors-fg-subtle, #71717a);
+        border: 1px solid var(--chakra-colors-border, rgb(39, 39, 42));
+      }
+
+      body {
+        background: var(--chakra-colors-bg, #09090b);
+      }
+
+      .logo {
+        filter: brightness(var(--logo-brightness, 150%));
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="/xlsolver/assets/index-CPmdMulF.js"></script>
+  <link rel="stylesheet" crossorigin href="/xlsolver/assets/index-D8cT7v1K.css">
+</head>
+
+<body>
+  <div id="root">
+    <div class="container">
+      <span class="title">XL Solver</span>
+      <div class="skeleton">Loading...</div>
+    </div>
+  </div>
+  <script>
+    let theme = window.localStorage.getItem("theme");
+    if (!theme || theme === 'system') {
+      theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light';
+    }
+
+    const root = document.querySelector(':root');
+    if (theme === 'light') {
+      root.style.setProperty('--logo-brightness', '100%');
+      root.style.setProperty('--chakra-colors-bg', 'white');
+      root.style.setProperty('--chakra-colors-fg-subtle', '#a1a1aa');
+      root.style.setProperty('--logo', '#a1a1aa');
+      root.style.setProperty('--chakra-colors-border', '#e4e4e7');
+    } else {
+      root.style.setProperty('--logo-brightness', '150%');
+      root.style.setProperty('--chakra-colors-bg', '#09090b');
+      root.style.setProperty('--chakra-colors-fg-subtle', '#71717a');
+      root.style.setProperty('--logo', '#71717a');
+      root.style.setProperty('--chakra-colors-border', 'rgb(39, 39, 42)');
+    }
+  </script>
+</body>
+
+</html>
